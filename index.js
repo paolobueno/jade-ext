@@ -55,7 +55,23 @@ exports.templateText = function (name, data) {
                     '.clearfix',
                     '  != form.label("' + property.name + '")',
                     '  .input',
-                    '    != form.checkbox("' + property.name + '")',
+                    '    != form.checkbox("' + property.name + '")'
+                ].join('\n') + '\n';
+                break;
+                case 'Date':
+                form += [
+                    '.clearfix',
+                    '  != form.label("' + property.name + '")',
+                    '  .input',
+                    '    != form.input("' + property.name + '", {type=\'date\'})'
+                ].join('\n') + '\n';
+                break;
+                case 'Number':
+                form += [
+                    '.clearfix',
+                    '  != form.label("' + property.name + '")',
+                    '  .input',
+                    '    != form.input("' + property.name + '", {type=\'number\'})'
                 ].join('\n') + '\n';
                 break;
                 default:
@@ -63,7 +79,7 @@ exports.templateText = function (name, data) {
                     '.clearfix',
                     '  != form.label("' + property.name + '")',
                     '  .input',
-                    '    != form.input("' + property.name + '")',
+                    '    != form.input("' + property.name + '")'
                 ].join('\n') + '\n';
             }
         });
