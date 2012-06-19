@@ -66,7 +66,7 @@ exports.templateText = function (name, data) {
                     '.control-group',
                     '  != form.label("' + property.name + '", false, {class: "control-label"})',
                     '  .controls',
-                    '    != form.input("' + property.name + '", {type=\'date\'})'
+                    '    != form.input("' + property.name + '", {type: \'date\'})'
                 ].join('\n') + '\n';
                 break;
                 case 'Number':
@@ -74,7 +74,7 @@ exports.templateText = function (name, data) {
                     '.control-group',
                     '  != form.label("' + property.name + '", false, {class: "control-label"})',
                     '  .controls',
-                    '    != form.input("' + property.name + '", {type=\'number\'})'
+                    '    != form.input("' + property.name + '", {type: \'number\'})'
                 ].join('\n') + '\n';
                 break;
                 default:
