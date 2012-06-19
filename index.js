@@ -41,13 +41,13 @@ exports.templateText = function (name, data) {
             switch (property.type) {
                 default:
                 fields.push(
-                    'tr\n' +
-                    '  th ' + property.name + '\n'+
-                    '  td= model.' + property.name + '\n');
+                    '    tr\n' +
+                    '      th ' + property.name + '\n'+
+                    '      td= model.' + property.name + '\n');
                 break;
             }
         });
-        return fs.readFileSync(exports.template('scaffold_show')).toString().replace('FIELDS', fields.join('\n  '));
+        return fs.readFileSync(exports.template('scaffold_show')).toString().replace(/FIELDS/, fields.join('\n'));
 
         case 'scaffold_form':
         var form = '';

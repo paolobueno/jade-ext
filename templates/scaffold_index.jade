@@ -1,15 +1,24 @@
 .page-header
-  h1 Index of models
+  h1 Index of model
 
-- models.forEach(function (model) {
-  .row
-    .span-two-thirds= 'model #' + model.id
-    .span-one-third
-      != link_to('Edit', path_to.edit_model(model), {class: 'btn primary'}) + ' '
-      != link_to('Delete', path_to.model(model), {class: 'btn danger', method: 'delete', remote: true, jsonp: '(function (u) {location.href = u;})'})
-- });
-
-hr
-
-.well
-  != link_to('New model', path_to.new_model, {class: 'btn'})
+.row
+  .span12
+      p!= link_to ('<i class="icon-plus icon-white"></i> New model', path_to.new_model, {class: 'btn btn-primary'})
+      if models.length > 0
+        table.table.table-striped
+          thead
+            tr
+              th ID
+              th Actions
+            tbody
+              - models.forEach(function (model) {
+                tr
+                  td
+                    strong!= link_to('model #' + model.id, path_to.model(model))
+                  td
+                    != link_to('<i class="icon-edit icon-white"></i> Edit', path_to.edit_model(model), {class: 'btn btn-mini btn-primary'}) + ' '
+                    != link_to('<i class="icon-remove icon-white"></i> Delete', path_to.model(model), {class: 'btn btn-mini btn-danger', method: 'delete', remote: true, jsonp: '(function (u) {location.href = u;})'})
+              - });
+      else
+        p.alert.alert-block.alert-info
+          strong No models were found.
